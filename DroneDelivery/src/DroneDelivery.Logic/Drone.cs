@@ -1,15 +1,19 @@
 ﻿using DroneDelivery.Logic.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DroneDelivery.Logic
 {
     public delegate void DroneNofity(DroneBase drone, string description);
+    public delegate void FinisDeliveriesNotify(DroneBase drone, ICollection<Coordinates> coordinates);
 
     public class Drone : DroneBase, IDrone
     {
         public event DroneNofity OnNavigate;
 
-        public event DroneNofity OnDeliver;
+        public event DroneNofity OnDelivery;
+
+        public event FinisDeliveriesNotify OnFinishAllDeliveries;
 
         public event DroneNofity OnStartDelivery;
 
@@ -22,7 +26,7 @@ namespace DroneDelivery.Logic
 
         public void Navigate()
         {
-            int deliverNumber = 0;
+            var destinations = new List<Coordinates>();
             foreach (var delivery in _deliveryPlans)
             {
                 OnStartDelivery?.Invoke(this, delivery.Address);
@@ -30,8 +34,13 @@ namespace DroneDelivery.Logic
                 {
                     OnNavigate?.Invoke(this, coordinate.ToString());
                 }
+
+                var destinationCoordinates = delivery.Coordinates.Last();
+                destinations.Add(destinationCoordinates);
+                OnDelivery?.Invoke(this, destinationCoordinates.ToString());
             }
-            OnDeliver?.Invoke(this, Key);
+
+            OnFinishAllDeliveries?.Invoke(this, destinations);
         }
     }
 }

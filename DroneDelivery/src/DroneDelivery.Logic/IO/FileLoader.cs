@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DroneDelivery.Logic.IO
 {
@@ -15,7 +14,7 @@ namespace DroneDelivery.Logic.IO
 
         public string WorkingDirectory { get; }
 
-        public async Task<IEnumerable<IEnumerable<string>>> LoadInfoAsync()
+        public IEnumerable<IEnumerable<string>> LoadInfo()
         {
             try
             {
@@ -23,7 +22,7 @@ namespace DroneDelivery.Logic.IO
                 var listOfOrders = new List<string[]>(files.Length);
                 foreach (var file in files)
                 {
-                    var content = await File.ReadAllLinesAsync(file).ConfigureAwait(false);
+                    var content = File.ReadAllLines(file);
                     listOfOrders.Add(content);
                 }
                 return listOfOrders;

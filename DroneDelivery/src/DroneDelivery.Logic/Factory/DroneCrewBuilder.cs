@@ -1,7 +1,6 @@
 ﻿using DroneDelivery.Logic.IO;
 using DroneDelivery.Logic.Models;
 using DroneDelivery.Logic.Translator;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +12,8 @@ namespace DroneDelivery.Logic.Factory
         private IEnumerable<IEnumerable<string>> _orders;
         private DroneNofity _navigationDelegate;
         private DroneNofity _startNavigationDelegate;
+        private DroneNofity _deliveryDelegate;
+        private FinisDeliveriesNotify _allDeliveriesNotificationDelegate;
 
         private DroneCrewBuilder()
         {
@@ -44,9 +45,21 @@ namespace DroneDelivery.Logic.Factory
             return this;
         }
 
+        public DroneCrewBuilder WithDeliveryNotification(DroneNofity deliveryDelegate)
+        {
+            _deliveryDelegate = deliveryDelegate;
+            return this;
+        }
+
+        public DroneCrewBuilder WithFinishAllDeliveriesNotification(FinisDeliveriesNotify finisDeliveriesNotifyDelegate)
+        {
+            _allDeliveriesNotificationDelegate = finisDeliveriesNotifyDelegate;
+            return this;
+        }
+
         public DroneCrewBuilder WithOrderLoader(ILoader<IEnumerable<IEnumerable<string>>> loader)
         {
-            _orders = loader.LoadInfoAsync().GetAwaiter().GetResult();
+            _orders = loader.LoadInfo();
             return this;
         }
 
@@ -56,9 +69,11 @@ namespace DroneDelivery.Logic.Factory
             int index = 0;
             foreach (var ordersByDrone in _orders)
             {
-                var drone = new Drone($"drone{++index}", _translator.Translate(ordersByDrone));
+                var drone = new Drone($"{++index}", _translator.Translate(ordersByDrone));
                 drone.OnNavigate += _navigationDelegate;
                 drone.OnStartDelivery += _startNavigationDelegate;
+                drone.OnDelivery += _deliveryDelegate;
+                drone.OnFinishAllDeliveries += _allDeliveriesNotificationDelegate;
                 drones.Add(drone);
             }
             return drones;
