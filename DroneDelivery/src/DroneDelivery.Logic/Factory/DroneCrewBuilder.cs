@@ -1,4 +1,5 @@
-﻿using DroneDelivery.Logic.Models;
+﻿using DroneDelivery.Logic.IO;
+using DroneDelivery.Logic.Models;
 using DroneDelivery.Logic.Translator;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,12 @@ namespace DroneDelivery.Logic.Factory
         public DroneCrewBuilder WithStartNavigationNotification(DroneNofity startNavigationDelegate)
         {
             _startNavigationDelegate = startNavigationDelegate;
+            return this;
+        }
+
+        public DroneCrewBuilder WithOrderLoader(ILoader<IEnumerable<IEnumerable<string>>> loader)
+        {
+            _orders = loader.LoadInfoAsync().GetAwaiter().GetResult();
             return this;
         }
 
