@@ -13,15 +13,16 @@ namespace DroneDelivery.Logic.Translator
                 return Enumerable.Empty<DeliveryPlan>();
 
             var plan = new List<DeliveryPlan>(source.Count());
-            int index = 0, currentX = 0, currentY = 0;
-            var currentOrientation = Orientation.N;
-
+            int index = 0;
             foreach (var movements in source)
             {
+                int currentX = 0, currentY = 0;
+                var currentOrientation = Orientation.N;
                 var coordinates = new List<Coordinates> { new Coordinates { X = 0, Y = 0, Orientation = Orientation.N } };
 
                 foreach (var movement in movements)
                 {
+                    currentOrientation = CalculateOrientation(currentOrientation, movement);
                     switch (currentOrientation)
                     {
                         case Orientation.N:
@@ -37,7 +38,6 @@ namespace DroneDelivery.Logic.Translator
                             currentX++;
                             break;
                     }
-                    currentOrientation = CalculateOrientation(currentOrientation, movement);
                     coordinates.Add(new Coordinates { X = currentX, Y = currentY, Orientation = currentOrientation });
                 }
                 plan.Add(new DeliveryPlan { Address = $"St {++index}", Coordinates = coordinates });

@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DB6B8414-9AA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{77C94C17-CDA6-47F9-9C48-C550E8EBA46D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneDelivery.UnitTests", "test\DroneDelivery.UnitTests\DroneDelivery.UnitTests.csproj", "{872A379E-3098-4252-A59F-4DFEA4E4C647}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{2ACF6FD4-0568-4A48-9A5A-AD47587BBA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ACF6FD4-0568-4A48-9A5A-AD47587BBA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ACF6FD4-0568-4A48-9A5A-AD47587BBA97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872A379E-3098-4252-A59F-4DFEA4E4C647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872A379E-3098-4252-A59F-4DFEA4E4C647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872A379E-3098-4252-A59F-4DFEA4E4C647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872A379E-3098-4252-A59F-4DFEA4E4C647}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{65FE299A-2784-4F78-BA61-DF4118CB56DE} = {DB6B8414-9AA4-44BA-83F0-F13C1CD10ECB}
 		{2ACF6FD4-0568-4A48-9A5A-AD47587BBA97} = {DB6B8414-9AA4-44BA-83F0-F13C1CD10ECB}
+		{872A379E-3098-4252-A59F-4DFEA4E4C647} = {77C94C17-CDA6-47F9-9C48-C550E8EBA46D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {547ACEF2-3BC8-471D-83BA-BCB2603067B6}
