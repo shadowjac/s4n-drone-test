@@ -1,4 +1,5 @@
-﻿using DroneDelivery.Logic.IO;
+﻿using DroneDelivery.Logic.Infrastructure;
+using DroneDelivery.Logic.IO;
 using DroneDelivery.Logic.Models;
 using DroneDelivery.Logic.Translator;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace DroneDelivery.Logic.Factory
     {
         private ITranslator<IEnumerable<string>, ICollection<DeliveryPlan>> _translator;
         private IEnumerable<IEnumerable<string>> _orders;
-        private DroneNofity _navigationDelegate;
-        private DroneNofity _startNavigationDelegate;
-        private DroneNofity _deliveryDelegate;
-        private FinisDeliveriesNotify _allDeliveriesNotificationDelegate;
+        private Delegates.DroneNofity _navigationDelegate;
+        private Delegates.DroneNofity _startNavigationDelegate;
+        private Delegates.DroneNofity _deliveryDelegate;
+        private Delegates.FinisDeliveriesNotify _allDeliveriesNotificationDelegate;
 
         private DroneCrewBuilder()
         {
@@ -33,25 +34,25 @@ namespace DroneDelivery.Logic.Factory
             return this;
         }
 
-        public DroneCrewBuilder WithNavigateNotification(DroneNofity navigationDelegate)
+        public DroneCrewBuilder WithNavigateNotification(Delegates.DroneNofity navigationDelegate)
         {
             _navigationDelegate = navigationDelegate;
             return this;
         }
 
-        public DroneCrewBuilder WithStartNavigationNotification(DroneNofity startNavigationDelegate)
+        public DroneCrewBuilder WithStartNavigationNotification(Delegates.DroneNofity startNavigationDelegate)
         {
             _startNavigationDelegate = startNavigationDelegate;
             return this;
         }
 
-        public DroneCrewBuilder WithDeliveryNotification(DroneNofity deliveryDelegate)
+        public DroneCrewBuilder WithDeliveryNotification(Delegates.DroneNofity deliveryDelegate)
         {
             _deliveryDelegate = deliveryDelegate;
             return this;
         }
 
-        public DroneCrewBuilder WithFinishAllDeliveriesNotification(FinisDeliveriesNotify finisDeliveriesNotifyDelegate)
+        public DroneCrewBuilder WithFinishAllDeliveriesNotification(Delegates.FinisDeliveriesNotify finisDeliveriesNotifyDelegate)
         {
             _allDeliveriesNotificationDelegate = finisDeliveriesNotifyDelegate;
             return this;

@@ -1,21 +1,19 @@
-﻿using DroneDelivery.Logic.Models;
+﻿using DroneDelivery.Logic.Infrastructure;
+using DroneDelivery.Logic.Models;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DroneDelivery.Logic
 {
-    public delegate void DroneNofity(DroneBase drone, string description);
-    public delegate void FinisDeliveriesNotify(DroneBase drone, ICollection<Coordinates> coordinates);
-
     public class Drone : DroneBase, IDrone
     {
-        public event DroneNofity OnNavigate;
+        public event Delegates.DroneNofity OnNavigate;
 
-        public event DroneNofity OnDelivery;
+        public event Delegates.DroneNofity OnDelivery;
 
-        public event FinisDeliveriesNotify OnFinishAllDeliveries;
+        public event Delegates.FinisDeliveriesNotify OnFinishAllDeliveries;
 
-        public event DroneNofity OnStartDelivery;
+        public event Delegates.DroneNofity OnStartDelivery;
 
         private readonly ICollection<DeliveryPlan> _deliveryPlans;
 
