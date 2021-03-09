@@ -1,37 +1,12 @@
-﻿using DroneDelivery.Logic.Factory;
-using DroneDelivery.Logic.IO;
-using DroneDelivery.Logic.Translator;
-using System;
-using System.Text;
+﻿using DroneDelivery.Logic;
+using System.Linq;
 
-namespace DroneDelivery.Client
+internal static class Program
 {
-    internal class Program
+    public static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            var drones = DroneCrewBuilder.Init()
-                                .WithTranslator(new CoordinateTranslator())
-                                .WithOrderLoader(new FileLoader(@"D:\s4n"))
-                                .WithDeliveryNotification((s, msg) => Console.WriteLine($"Drone {s.Key} delivered at {msg}"))
-                                .WithStartNavigationNotification((s, msg) => Console.WriteLine($"Drone {s.Key} starting delivery to {msg}"))
-                                .WithFinishAllDeliveriesNotification((currentDrone, deliveries) =>
-                                {
-                                    var writer = new FileWriter(@$"D:\s4n\output\out{currentDrone.Key}.txt");
-                                    var sb = new StringBuilder($"*** Reporte de entregas para dron: {currentDrone.Key} ***{Environment.NewLine}");
-                                    foreach (var coordinate in deliveries)
-                                    {
-                                        sb.AppendLine(coordinate.ToString());
-                                    }
-                                    writer.Write(sb.ToString());
-                                })
-                                //.WithNavigateNotification((s, msg) => Console.WriteLine($"{s.Key} {msg}"))
-                                .Build();
-
-            foreach (var drone in drones)
-            {
-                drone.Navigate();
-            }
-        }
+        if (args.Any() && args[0] == "1")
+            DeliveryHandler.Start();
+        else DeliveryHandler.StartAsync();
     }
 }
