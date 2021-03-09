@@ -67,6 +67,8 @@ namespace DroneDelivery.Logic.Factory
 
         public ICollection<Drone> Build()
         {
+            if (_translator == null && _orders.Any()) throw new System.ArgumentNullException("A translator is needed in order to proceed with crew build");
+
             var drones = new List<Drone>(_orders.Count());
             int index = 0;
             foreach (var ordersByDrone in _orders)

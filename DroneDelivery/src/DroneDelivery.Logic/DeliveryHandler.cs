@@ -10,7 +10,7 @@ namespace DroneDelivery.Logic
 {
     public static class DeliveryHandler
     {
-        private static ICollection<Drone> _drones;
+        private static readonly ICollection<Drone> _drones;
 
         static DeliveryHandler()
         {

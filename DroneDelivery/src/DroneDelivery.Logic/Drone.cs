@@ -15,18 +15,18 @@ namespace DroneDelivery.Logic
 
         public event Delegates.DroneNofity OnStartDelivery;
 
-        private readonly IEnumerable<DeliveryPlan> _deliveryPlans;
-
         public Drone(string key, IEnumerable<DeliveryPlan> deliveryPlans) : base(key)
         {
-            _deliveryPlans = deliveryPlans;
+            DeliveryPlans = deliveryPlans;
         }
+
+        public IEnumerable<DeliveryPlan> DeliveryPlans { get; }
 
         public void Navigate()
         {
-            if (_deliveryPlans == null) return;
+            if (DeliveryPlans == null) return;
             var destinations = new List<Coordinates>();
-            foreach (var delivery in _deliveryPlans)
+            foreach (var delivery in DeliveryPlans)
             {
                 OnStartDelivery?.Invoke(this, delivery.Address);
                 foreach (var coordinate in delivery.Coordinates)
