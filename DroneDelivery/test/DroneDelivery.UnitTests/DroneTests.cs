@@ -35,9 +35,9 @@ namespace DroneDelivery.UnitTests
         {
             var deliveryPlans = new List<DeliveryPlan>()
             {
-                new DeliveryPlan{ Address ="St1", Coordinates = new Coordinates[]{new Coordinates{ X = 0, Y = 0, Orientation = Orientation.N } } },
-                new DeliveryPlan{ Address ="St2", Coordinates = new Coordinates[]{new Coordinates{ X = 0, Y = 1, Orientation = Orientation.N } } },
-                new DeliveryPlan{ Address ="St3", Coordinates = new Coordinates[]{new Coordinates{ X = 1, Y = 1, Orientation = Orientation.E } } }
+                new DeliveryPlan{ Address ="St1", Coordinates = new Coordinates[]{new Coordinates{ X = 0, Y = 0, Direction = Directions.N } } },
+                new DeliveryPlan{ Address ="St2", Coordinates = new Coordinates[]{new Coordinates{ X = 0, Y = 1, Direction = Directions.N } } },
+                new DeliveryPlan{ Address ="St3", Coordinates = new Coordinates[]{new Coordinates{ X = 1, Y = 1, Direction = Directions.E } } }
             };
             var drone = new Drone("drone 1", deliveryPlans);
             bool onNavigateRaised = false, onStartRaised = false, onFinishRaised = false, onDeliveryRaised = false;
@@ -65,8 +65,8 @@ namespace DroneDelivery.UnitTests
                     Address ="St1",
                     Coordinates = new Coordinates[]
                     {
-                        new Coordinates{ X = 0, Y = 0, Orientation = Orientation.N },
-                        new Coordinates { X = 0, Y = 5, Orientation = Orientation.S } 
+                        new Coordinates{ X = 0, Y = 0, Direction = Directions.N },
+                        new Coordinates { X = 0, Y = 5, Direction = Directions.S } 
                     }
                 },
                 new DeliveryPlan
@@ -74,8 +74,8 @@ namespace DroneDelivery.UnitTests
                     Address ="St2", 
                     Coordinates = new Coordinates[]
                     {
-                        new Coordinates{ X = 0, Y = 1, Orientation = Orientation.N },
-                        new Coordinates { X = 0, Y = 0, Orientation = Orientation.W }
+                        new Coordinates{ X = 0, Y = 1, Direction = Directions.N },
+                        new Coordinates { X = 0, Y = 0, Direction = Directions.W }
                     }
                 },
             };
@@ -89,10 +89,10 @@ namespace DroneDelivery.UnitTests
             deliveryCoordinates.Should().NotBeNull();
             deliveryCoordinates.Should().NotBeEmpty();
             deliveryCoordinates.Count.Should().Be(2);
-            deliveryCoordinates[0].Orientation.Should().Be(Orientation.S);
+            deliveryCoordinates[0].Direction.Should().Be(Directions.S);
             deliveryCoordinates[0].X.Should().Be(0);
             deliveryCoordinates[0].Y.Should().Be(5);
-            deliveryCoordinates[1].Orientation.Should().Be(Orientation.W);
+            deliveryCoordinates[1].Direction.Should().Be(Directions.W);
             deliveryCoordinates[1].X.Should().Be(0);
             deliveryCoordinates[1].Y.Should().Be(0);
 

@@ -30,57 +30,57 @@ namespace DroneDelivery.UnitTests.Translator
             
             result.ElementAt(0).Coordinates.ElementAt(0).X.Should().Be(0);
             result.ElementAt(0).Coordinates.ElementAt(0).Y.Should().Be(0);
-            result.ElementAt(0).Coordinates.ElementAt(0).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(0).Coordinates.ElementAt(0).Direction.Should().Be(Directions.N);
 
             result.ElementAt(0).Coordinates.ElementAt(1).X.Should().Be(0);
             result.ElementAt(0).Coordinates.ElementAt(1).Y.Should().Be(1);
-            result.ElementAt(0).Coordinates.ElementAt(1).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(0).Coordinates.ElementAt(1).Direction.Should().Be(Directions.N);
 
             result.ElementAt(0).Coordinates.ElementAt(2).X.Should().Be(-1);
             result.ElementAt(0).Coordinates.ElementAt(2).Y.Should().Be(1);
-            result.ElementAt(0).Coordinates.ElementAt(2).Orientation.Should().Be(Orientation.W);
+            result.ElementAt(0).Coordinates.ElementAt(2).Direction.Should().Be(Directions.W);
 
             result.ElementAt(0).Coordinates.ElementAt(3).X.Should().Be(-1);
             result.ElementAt(0).Coordinates.ElementAt(3).Y.Should().Be(2);
-            result.ElementAt(0).Coordinates.ElementAt(3).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(0).Coordinates.ElementAt(3).Direction.Should().Be(Directions.N);
 
             result.ElementAt(1).Address.Should().Be("St 2");
             result.ElementAt(1).Coordinates.Count().Should().Be(4);
 
             result.ElementAt(1).Coordinates.ElementAt(0).X.Should().Be(0);
             result.ElementAt(1).Coordinates.ElementAt(0).Y.Should().Be(0);
-            result.ElementAt(1).Coordinates.ElementAt(0).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(1).Coordinates.ElementAt(0).Direction.Should().Be(Directions.N);
 
             result.ElementAt(1).Coordinates.ElementAt(1).X.Should().Be(1);
             result.ElementAt(1).Coordinates.ElementAt(1).Y.Should().Be(0);
-            result.ElementAt(1).Coordinates.ElementAt(1).Orientation.Should().Be(Orientation.E);
+            result.ElementAt(1).Coordinates.ElementAt(1).Direction.Should().Be(Directions.E);
 
             result.ElementAt(1).Coordinates.ElementAt(2).X.Should().Be(1);
             result.ElementAt(1).Coordinates.ElementAt(2).Y.Should().Be(1);
-            result.ElementAt(1).Coordinates.ElementAt(2).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(1).Coordinates.ElementAt(2).Direction.Should().Be(Directions.N);
 
             result.ElementAt(1).Coordinates.ElementAt(3).X.Should().Be(1);
             result.ElementAt(1).Coordinates.ElementAt(3).Y.Should().Be(2);
-            result.ElementAt(1).Coordinates.ElementAt(3).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(1).Coordinates.ElementAt(3).Direction.Should().Be(Directions.N);
 
             result.ElementAt(2).Address.Should().Be("St 3");
             result.ElementAt(2).Coordinates.Count().Should().Be(4);
 
             result.ElementAt(2).Coordinates.ElementAt(0).X.Should().Be(0);
             result.ElementAt(2).Coordinates.ElementAt(0).Y.Should().Be(0);
-            result.ElementAt(2).Coordinates.ElementAt(0).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(2).Coordinates.ElementAt(0).Direction.Should().Be(Directions.N);
 
             result.ElementAt(2).Coordinates.ElementAt(1).X.Should().Be(0);
             result.ElementAt(2).Coordinates.ElementAt(1).Y.Should().Be(1);
-            result.ElementAt(2).Coordinates.ElementAt(1).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(2).Coordinates.ElementAt(1).Direction.Should().Be(Directions.N);
 
             result.ElementAt(2).Coordinates.ElementAt(2).X.Should().Be(0);
             result.ElementAt(2).Coordinates.ElementAt(2).Y.Should().Be(2);
-            result.ElementAt(2).Coordinates.ElementAt(2).Orientation.Should().Be(Orientation.N);
+            result.ElementAt(2).Coordinates.ElementAt(2).Direction.Should().Be(Directions.N);
 
             result.ElementAt(2).Coordinates.ElementAt(3).X.Should().Be(-1);
             result.ElementAt(2).Coordinates.ElementAt(3).Y.Should().Be(2);
-            result.ElementAt(2).Coordinates.ElementAt(3).Orientation.Should().Be(Orientation.W);
+            result.ElementAt(2).Coordinates.ElementAt(3).Direction.Should().Be(Directions.W);
         }
     }
 }

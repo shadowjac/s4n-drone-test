@@ -67,12 +67,12 @@ namespace DroneDelivery.UnitTests.Factory
             deliveryCoordinates.Should().NotBeEmpty();
             deliveryCoordinates.Count.Should().Be(6);
 
-            deliveryCoordinates[0].ToString().Should().Be("(-1, 3), Direction W");
-            deliveryCoordinates[1].ToString().Should().Be("(-1, 3), Direction N");
-            deliveryCoordinates[2].ToString().Should().Be("(1, 3), Direction N");
-            deliveryCoordinates[3].ToString().Should().Be("(1, 2), Direction N");
-            deliveryCoordinates[4].ToString().Should().Be("(1, -2), Direction S");
-            deliveryCoordinates[5].ToString().Should().Be("(-1, 0), Direction S");
+            deliveryCoordinates[0].ToString().Should().Be("(-1, 3), Direction West");
+            deliveryCoordinates[1].ToString().Should().Be("(-1, 3), Direction North");
+            deliveryCoordinates[2].ToString().Should().Be("(1, 3), Direction North");
+            deliveryCoordinates[3].ToString().Should().Be("(1, 2), Direction North");
+            deliveryCoordinates[4].ToString().Should().Be("(1, -2), Direction South");
+            deliveryCoordinates[5].ToString().Should().Be("(-1, 0), Direction South");
         }
     }
 

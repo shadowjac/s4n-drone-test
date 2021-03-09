@@ -17,55 +17,55 @@ namespace DroneDelivery.Logic.Translator
             foreach (var movements in source)
             {
                 int currentX = 0, currentY = 0;
-                var currentOrientation = Orientation.N;
-                var coordinates = new List<Coordinates> { new Coordinates { X = 0, Y = 0, Orientation = Orientation.N } };
+                var currentDirection = Directions.N;
+                var coordinates = new List<Coordinates> { new Coordinates { X = 0, Y = 0, Direction = Directions.N } };
 
                 foreach (var movement in movements)
                 {
-                    currentOrientation = CalculateOrientation(currentOrientation, movement);
-                    switch (currentOrientation)
+                    currentDirection = CalculateDirection(currentDirection, movement);
+                    switch (currentDirection)
                     {
-                        case Orientation.N:
+                        case Directions.N:
                             currentY++;
                             break;
-                        case Orientation.S:
+                        case Directions.S:
                             currentY--;
                             break;
-                        case Orientation.W:
+                        case Directions.W:
                             currentX--;
                             break;
-                        case Orientation.E:
+                        case Directions.E:
                             currentX++;
                             break;
                     }
-                    coordinates.Add(new Coordinates { X = currentX, Y = currentY, Orientation = currentOrientation });
+                    coordinates.Add(new Coordinates { X = currentX, Y = currentY, Direction = currentDirection });
                 }
                 plan.Add(new DeliveryPlan { Address = $"St {++index}", Coordinates = coordinates });
             }
             return plan;
         }
 
-        private static Orientation CalculateOrientation(Orientation currentOrientation, char movement) => (currentOrientation, movement) switch
+        private static Directions CalculateDirection(Directions currentDirection, char movement) => (currentDirection, movement) switch
         {
-            (Orientation.N, 'A') => Orientation.N,
-            (Orientation.N, 'I') => Orientation.W,
-            (Orientation.N, 'D') => Orientation.E,
-            (Orientation.N, _) => Orientation.N,
+            (Directions.N, 'A') => Directions.N,
+            (Directions.N, 'I') => Directions.W,
+            (Directions.N, 'D') => Directions.E,
+            (Directions.N, _) => Directions.N,
 
-            (Orientation.S, 'A') => Orientation.S,
-            (Orientation.S, 'I') => Orientation.E,
-            (Orientation.S, 'D') => Orientation.W,
-            (Orientation.S, _) => Orientation.S,
+            (Directions.S, 'A') => Directions.S,
+            (Directions.S, 'I') => Directions.E,
+            (Directions.S, 'D') => Directions.W,
+            (Directions.S, _) => Directions.S,
 
-            (Orientation.W, 'A') => Orientation.W,
-            (Orientation.W, 'I') => Orientation.S,
-            (Orientation.W, 'D') => Orientation.N,
-            (Orientation.W, _) => Orientation.W,
+            (Directions.W, 'A') => Directions.W,
+            (Directions.W, 'I') => Directions.S,
+            (Directions.W, 'D') => Directions.N,
+            (Directions.W, _) => Directions.W,
 
-            (Orientation.E, 'A') => Orientation.E,
-            (Orientation.E, 'I') => Orientation.N,
-            (Orientation.E, 'D') => Orientation.S,
-            (Orientation.E, _) => Orientation.E,
+            (Directions.E, 'A') => Directions.E,
+            (Directions.E, 'I') => Directions.N,
+            (Directions.E, 'D') => Directions.S,
+            (Directions.E, _) => Directions.E,
 
             _ => throw new System.NotImplementedException(),
         };

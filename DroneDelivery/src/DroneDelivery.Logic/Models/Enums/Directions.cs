@@ -1,6 +1,6 @@
 ﻿namespace DroneDelivery.Logic.Models.Enums
 {
-    public enum Orientation
+    public enum Directions
     {
         N, S, W, E
     }

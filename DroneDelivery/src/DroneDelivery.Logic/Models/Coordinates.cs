@@ -4,17 +4,26 @@ namespace DroneDelivery.Logic.Models
 {
     public struct Coordinates
     {
-        public Coordinates(int x, int y, Orientation orientation)
+        public Coordinates(int x, int y, Directions direction)
         {
             X = x;
             Y = y;
-            Orientation = orientation;
+            Direction = direction;
         }
 
         public int X { get; set; }
         public int Y { get; set; }
-        public Orientation Orientation { get; set; }
+        public Directions Direction { get; set; }
 
-        public override string ToString() => $"({X}, {Y}), Direction {Orientation}";
+        public override string ToString() => $"({X}, {Y}), Direction {DirectionName}";
+
+        private string DirectionName => (Direction) switch
+        {
+            Directions.N => "North",
+            Directions.S => "South",
+            Directions.W => "West",
+            Directions.E => "East",
+            _ => throw new System.NotImplementedException(),
+        };
     }
 }
