@@ -9,7 +9,7 @@ namespace DroneDelivery.Logic.Factory
 {
     public sealed class DroneCrewBuilder
     {
-        private ITranslator<IEnumerable<string>, ICollection<DeliveryPlan>> _translator;
+        private ITranslator<IEnumerable<string>, IEnumerable<DeliveryPlan>> _translator;
         private IEnumerable<IEnumerable<string>> _orders;
         private Delegates.DroneNofity _navigationDelegate;
         private Delegates.DroneNofity _startNavigationDelegate;
@@ -22,7 +22,7 @@ namespace DroneDelivery.Logic.Factory
 
         public static DroneCrewBuilder Init() => new DroneCrewBuilder();
 
-        public DroneCrewBuilder WithTranslator(ITranslator<IEnumerable<string>, ICollection<DeliveryPlan>> translator)
+        public DroneCrewBuilder WithTranslator(ITranslator<IEnumerable<string>, IEnumerable<DeliveryPlan>> translator)
         {
             _translator = translator;
             return this;

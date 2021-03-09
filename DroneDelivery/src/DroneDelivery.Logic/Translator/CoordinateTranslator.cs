@@ -5,10 +5,13 @@ using System.Linq;
 
 namespace DroneDelivery.Logic.Translator
 {
-    public class CoordinateTranslator : ITranslator<IEnumerable<string>, ICollection<DeliveryPlan>>
+    public class CoordinateTranslator : ITranslator<IEnumerable<string>, IEnumerable<DeliveryPlan>>
     {
-        public ICollection<DeliveryPlan> Translate(IEnumerable<string> source)
+        public IEnumerable<DeliveryPlan> Translate(IEnumerable<string> source)
         {
+            if (source == null)
+                return Enumerable.Empty<DeliveryPlan>();
+
             var plan = new List<DeliveryPlan>(source.Count());
             int index = 0, currentX = 0, currentY = 0;
             var currentOrientation = Orientation.N;
