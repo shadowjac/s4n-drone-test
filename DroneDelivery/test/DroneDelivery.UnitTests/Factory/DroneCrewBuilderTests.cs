@@ -10,7 +10,7 @@ using Xunit;
 
 namespace DroneDelivery.UnitTests.Factory
 {
-    public class DroneCreoBuilderTests
+    public class DroneCrewBuilderTests
     {
         [Fact]
         public async Task DroneCrewBuilder_WhenBuildWithBasicConfiguration_ShouldReturnEmptyDroneCrew()
