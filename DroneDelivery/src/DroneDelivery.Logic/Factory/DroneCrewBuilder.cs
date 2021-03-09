@@ -18,6 +18,7 @@ namespace DroneDelivery.Logic.Factory
 
         private DroneCrewBuilder()
         {
+            _orders = Enumerable.Empty<IEnumerable<string>>();
         }
 
         public static DroneCrewBuilder Init() => new DroneCrewBuilder();
@@ -60,7 +61,7 @@ namespace DroneDelivery.Logic.Factory
 
         public DroneCrewBuilder WithOrderLoader(ILoader<IEnumerable<IEnumerable<string>>> loader)
         {
-            _orders = loader.LoadInfo();
+            _orders = loader?.LoadInfo() ?? Enumerable.Empty<IEnumerable<string>>();
             return this;
         }
 

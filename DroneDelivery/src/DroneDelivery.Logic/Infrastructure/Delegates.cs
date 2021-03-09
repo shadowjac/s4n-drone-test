@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DroneDelivery.Logic.Infrastructure
 {
-    public class Delegates
+    public static class Delegates
     {
         public delegate void DroneNofity(DroneBase drone, string description);
 
